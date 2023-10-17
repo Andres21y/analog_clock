@@ -5,7 +5,7 @@
 }
 
 :root {
-    --primary-background:linear-gradient(to top, #09203f 0%, #537895 100%);
+    --primary-background: linear-gradient(to top, #09203f 0%, #537895 100%);
     --secondary-background: #0106339d;
     --border-color: #04eaff;
     --text-color: #ffffff0b;
@@ -13,7 +13,7 @@
     --focuse-color: rgb(255, 0, 0);
     --blue-color: rgb(0, 149, 255);
     --white-color: rgb(255, 255, 255);
-    --font-cursive:'Dancing Script', cursive;
+    --font-cursive: 'Dancing Script', cursive;
     --font-Poppins: 'Poppins', sans-serif;
 }
 
@@ -34,16 +34,34 @@ body {
     display: grid;
     place-items: center;
     background-image:
-        linear-gradient(0deg, transparent 24%, var(--text-color) 25%, var(--text-color) 26%, transparent 27%, transparent 74%, var(--text-color) 75%, var(--text-color) 76%, transparent 77%, transparent),
-        linear-gradient(90deg, transparent 24%, var(--text-color) 25%, var(--text-color) 26%, transparent 27%, transparent 74%, var(--text-color) 75%, var(--text-color) 76%, transparent 77%, transparent);
+        linear-gradient(0deg, transparent 24%,
+            var(--text-color) 25%, var(--text-color) 26%,
+            transparent 27%, transparent 74%, var(--text-color) 75%,
+            var(--text-color) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%,
+            var(--text-color) 25%, var(--text-color) 26%,
+            transparent 27%, transparent 74%, var(--text-color) 75%,
+            var(--text-color) 76%, transparent 77%, transparent);
     background-size: 55px 55px;
     box-shadow: 0 4px 12px #ffffff83;
 }
 
-h1 {
+.title,
+.year-summary {
+    padding: .5rem;
+    position: absolute;
+    border-radius: 5px;
+    opacity: .3;
+    font-family: var(--font-cursive);
     color: #ffffff;
-    font-family:var(--font-cursive) ;
+}
 
+.title {
+    top: 9rem
+}
+
+.year-summary {
+    bottom: 9rem;
 }
 
 .bar {
@@ -74,7 +92,7 @@ h1 {
     display: inline-block;
     width: 2px;
     height: 12px;
-    background-color:var(--highlight-color);
+    background-color: var(--highlight-color);
 }
 
 .bar span:nth-child(5n + 1) p {
@@ -132,7 +150,7 @@ h1 {
 .second-container::after {
     position: absolute;
     content: '';
-    background-color:var(--focuse-color);
+    background-color: var(--focuse-color);
     height: 8px;
     width: 8px;
     border-radius: 50%;
@@ -228,14 +246,4 @@ h1 {
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-bottom: 13px solid var(--focuse-color);
-}
-
-.year-summary{
-    padding: .5rem;
-    position: absolute;
-    border-radius: 5px;
-    bottom: 9rem;
-    opacity: .3;
-    color: #ffffff;
-    font-family:var(--font-cursive) ;
 }
