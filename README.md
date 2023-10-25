@@ -9,8 +9,7 @@ Characteristics:
 - Display of the current time in 12-hour format.
 - Scalability and customization through CSS.
 - 
- # Views
-<img src="./images/alterClock.png" height="50%" width="50%">
+ # View
 <img src="./images/clock.png" height="100%" width="100%">
 
 # Facility
