@@ -2,37 +2,46 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 17px;
 }
 
 :root {
-    --primary-background: linear-gradient(to top, #09203f 0%, #537895 100%);
-    --secondary-background: #0106339d;
-    --border-color: #04eaff;
-    --text-color: #ffffff0b;
-    --highlight-color: #04eaff82;
-    --focuse-color: rgb(255, 0, 0);
-    --blue-color: rgb(0, 149, 255);
-    --white-color: rgb(255, 255, 255);
+    --bg-main: rgb(240, 128, 128);
+    --bg-clock: #000000;
+    --color-text:#c4c4c4 ;
+    --color-focuse: #ff0000;
+    --color-alter:rgba(2, 98, 103, 0.565);
+    --text-color:#bbbbbb0f;
     --font-cursive: 'Dancing Script', cursive;
     --font-Poppins: 'Poppins', sans-serif;
 }
 
 body {
-    display: grid;
-    place-items: center;
-    min-height: 100vh;
-    background: var(--primary-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: var(--bg-main);
+    min-width: 320px;
+}
+
+.container {
+    width: 90%;
+    min-width: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .wrapper {
     position: relative;
-    height: 500px;
-    width: 500px;
-    background: #0106339d;
-    border: 1rem double var(--border-color);
+    min-width: 320px;
+    height: 320px;
     border-radius: 50%;
     display: grid;
     place-items: center;
+    border: 5px solid var(--color-alter);
     background-image:
         linear-gradient(0deg, transparent 24%,
             var(--text-color) 25%, var(--text-color) 26%,
@@ -42,208 +51,228 @@ body {
             var(--text-color) 25%, var(--text-color) 26%,
             transparent 27%, transparent 74%, var(--text-color) 75%,
             var(--text-color) 76%, transparent 77%, transparent);
-    background-size: 55px 55px;
-    box-shadow: 0 4px 12px #ffffff83;
+    background-size: 5% 5%;
+    box-shadow: 2px 2px 12px;
+    background-color: var(--bg-clock);
 }
 
 .title,
 .year-summary {
-    padding: .5rem;
     position: absolute;
-    border-radius: 5px;
-    opacity: .3;
+    font-size: 1rem;
     font-family: var(--font-cursive);
-    color: #ffffff;
+    color:var(--color-text);
+    opacity: .6;
 }
 
 .title {
-    top: 9rem
+    top: 6rem
 }
 
 .year-summary {
-    bottom: 9rem;
+    bottom: 5rem;
+}
+
+
+.number-hours {
+    position: absolute;
+    width: 10px;
+    height: 82%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .bar {
     position: absolute;
-    width: 89%;
-    height: 89%;
-    border-radius: 50%;
-}
-
-.number-hours {
-    position: absolute;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    display: grid;
-    place-items: center;
 
 }
 
 .bar span {
+    max-width: 293px;
+    max-height: 293px;
     position: absolute;
     transform: rotate(calc(var(--index)*6deg));
-    inset: -30px;
+    inset: .5rem;
+    overflow: hidden;
     text-align: center;
 }
 
 .bar span p {
     display: inline-block;
     width: 2px;
-    height: 12px;
-    background-color: var(--highlight-color);
+    height: 14px;
+    background-color: var(--color-text);
 }
 
 .bar span:nth-child(5n + 1) p {
-    background-color: var(--border-color);
     width: 5px;
-    height: 10px;
+    height: 5px;
+    border-radius: 5px;
+    background-color:var(--color-focuse);
+    animation: breath 1s infinite;
 }
 
 .number-hours span {
     position: absolute;
     transform: rotate(calc(var(--index) * 30deg));
-    inset: 6px;
+    inset: -.2rem;
     text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
 }
 
 
 .number-hours span p {
     transform: rotate(calc(var(--index) * -30deg));
-    font-size: 2.2rem;
-    -webkit-text-stroke: 1px #00e5ff;
+    font-size: 1.2rem;
+    width: fit-content;
+    -webkit-text-stroke: 1px #ffffff;
+
 }
 
 .hour-container,
 .minute-container,
 .second-container {
     position: absolute;
-    display: grid;
-    place-items: center;
-    height: 17px;
-    width: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.hour-container {
+    height: 30%;
+    width: 30%;
+}
 
+.minute-container {
+    height: 40%;
+    width: 40%;
+    z-index: 2;
+}
+
+.second-container {
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+}
 
 .hour-container::after {
     position: absolute;
     content: '';
-    background-color: var(--border-color);
-    height: 17px;
-    width: 17px;
+    background-color:var(--color-text);
+    height: 12px;
+    width: 12px;
     border-radius: 50%;
-
 }
 
 .minute-container::after {
     position: absolute;
     content: '';
-    background-color: rgba(0, 0, 0, 0.374);
-    height: 13px;
-    width: 13px;
+    background-color: var(--color-text);
+    height: 10px;
+    width: 10px;
     border-radius: 50%;
-
 }
 
 .second-container::after {
     position: absolute;
     content: '';
-    background-color: var(--focuse-color);
+    background-color:var(--color-focuse);
     height: 8px;
     width: 8px;
     border-radius: 50%;
+}
+
+.hour-container {
+    position: absolute;
+    height: 40%;
+    width: 30%;
+}
+
+.minute-container {
+    position: absolute;
+    height: 70%;
+    width: 50%;
 
 }
 
-.hour-container,
-.hour-indicator {
-    width: 120;
-    height: 270px;
-}
+.second-container {
+    position: relative;
+    height: 80%;
+    width: 70%;
 
-.minute-container,
-.minute-indicator {
-    width: 100px;
-    height: 300px;
-}
-
-.second-container,
-.second-indicator {
-    width: 100px;
-    height: 400px;
 }
 
 .hour-indicator,
 .minute-indicator,
 .second-indicator {
+    position: absolute;
     display: flex;
     justify-content: center;
-    position: absolute;
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
 }
 
 .hour-indicator::before {
     content: '';
     position: absolute;
-    width: 6px;
-    height: 130px;
+    width: 5.5px;
+    height: 50%;
+    background:var(--color-text);
     z-index: 10;
-    background: var(--border-color);
 }
 
-.hour-indicator::after {
-    content: '';
-    position: absolute;
-    top: -5px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 15px solid var(--border-color);
-}
 
 .minute-indicator::before {
     content: '';
     position: absolute;
     width: 4px;
-    height: 165px;
-    background-color: var(--border-color);
-    z-index: 11;
-    border-radius: 6px;
+    height: 50%;
+    background-color:var(--color-text);
 }
 
-.minute-indicator::after {
-    content: '';
-    position: absolute;
-    top: -.7rem;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 13px solid var(--border-color);
-}
 
 .second-indicator::before {
     content: '';
     position: absolute;
     width: 2px;
-    height: 230px;
-    background: var(--focuse-color);
-    z-index: 22;
-    border-radius: 6px;
-    border-width: -2px;
+    height: 50%;
+    background: var(--color-focuse);
+
 }
 
+
+.hour-indicator::after,
+.minute-indicator::after,
 .second-indicator::after {
     content: '';
     position: absolute;
-    z-index: 22;
-    top: -.7rem;
+    top: -5px;
     width: 0;
     height: 0;
+}
+
+
+.hour-indicator::after,
+.minute-indicator::after {
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 13px solid var(--color-text);
+}
+
+.second-indicator::after {
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-bottom: 13px solid var(--focuse-color);
+    border-bottom: 12px solid var(--color-focuse);
+}
+
+
+@keyframes breath {
+    100% {
+        opacity: .5;
+    }
 }
