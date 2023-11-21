@@ -30,7 +30,7 @@ for (let i = 1; i <= 12; i++) {
 numberHoursDiv.insertAdjacentHTML('afterbegin', numberElement.join(''));
 
 
-for (let i = 0; i <= 60; i++) {
-    barElement.push(`<span style='--index:${i}'><p></p></span>`)
-}
-barSecond.insertAdjacentHTML('afterbegin', barElement.join(''));
+// for (let i = 0; i <= 60; i++) {
+//     barElement.push(`<span style='--index:${i}'><p></p></span>`)
+// }
+// barSecond.insertAdjacentHTML('afterbegin', barElement.join(''));
